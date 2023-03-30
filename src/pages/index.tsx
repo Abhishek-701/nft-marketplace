@@ -7,16 +7,31 @@ import { BaseLayout, NftList } from '../components/ui'
 import nfts from "../content/meta.json"
 
 const Home: NextPage = () => {
-  const { provider } = useWeb3();
+  const { provider , contract } = useWeb3();
+
+  const getNftInfo = async () => {
+    console.log(await contract!.name());
+    console.log(await contract!.symbol());
+  }
+
+  if (contract) {
+    getNftInfo();
+  }
+  
 
   const getAccounts = async () => {
-    const accounts = await provider.send("eth_accounts");
+    const accounts = await provider!.listAccounts();
     console.log(accounts[0]);
+    
   }
 
   if (provider) {
     getAccounts();
   }
+
+  
+
+  
   return (
     <BaseLayout>
       

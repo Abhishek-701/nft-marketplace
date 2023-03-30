@@ -1,0 +1,4 @@
+{
+    "solidity.defaultCompiler": "localFile",
+    "solidity.remappings":["@openzeppelin/=/Users/walve/project/nft-marketplace/node_modules/@openzeppelin"] 
+}
