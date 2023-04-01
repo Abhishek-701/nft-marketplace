@@ -18,11 +18,11 @@
     "paths": {
       "@ui": ["components/ui"],
       "@ui/*": ["components/ui/*"],
-      "@providers": ["components/providers"],
-      "@providers/*": ["components/providers/*"],
-      "@hooks": ["components/hooks"],
-      "@hooks/*": ["components/hooks/*"],
-      "@_types/*": ["types/*"],
+      "@providers": ["src/components/providers"],
+      "@providers/*": ["src/components/providers/*"],
+      "@hooks": ["src/components/hooks"],
+      "@hooks/*": ["src/components/hooks/*"],
+      "@_types/*": ["src/types/*"],
       "@/*": ["./src/*"]
     }
   },
