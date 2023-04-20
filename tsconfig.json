@@ -16,8 +16,8 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@ui": ["components/ui"],
-      "@ui/*": ["components/ui/*"],
+      "@ui": ["src/components/ui"],
+      "@ui/*": ["src/components/ui/*"],
       "@providers": ["src/components/providers"],
       "@providers/*": ["src/components/providers/*"],
       "@hooks": ["src/components/hooks"],

@@ -31,13 +31,13 @@ export const createDefaultState = () => {
 
 export const createWeb3State = ({
   ethereum, provider, contract, isLoading
-}: Web3Dependencies & {isLoading: boolean}) => {
+}: Web3Dependencies) => {
   return {
     ethereum,
     provider,
     contract,
     isLoading,
-    hooks: setupHooks({ethereum, provider, contract})
+    hooks: setupHooks({ethereum, provider, contract, isLoading})
   }
 }
 

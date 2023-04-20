@@ -1,36 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { useWeb3 } from '@/components/providers/web3'
-import { NftMeta } from '@/types/nft'
+
 import type { NextPage } from 'next'
 import { BaseLayout, NftList } from '../components/ui'
-import nfts from "../content/meta.json"
+import { useNetwork } from '@hooks/web3';
+
 
 const Home: NextPage = () => {
-  const { provider , contract } = useWeb3();
-
-  const getNftInfo = async () => {
-    console.log(await contract!.name());
-    console.log(await contract!.symbol());
-  }
-
-  if (contract) {
-    getNftInfo();
-  }
-  
-
-  const getAccounts = async () => {
-    const accounts = await provider!.listAccounts();
-    console.log(accounts[0]);
-    
-  }
-
-  if (provider) {
-    getAccounts();
-  }
-
-  
-
+  const { network } = useNetwork();
   
   return (
     <BaseLayout>
@@ -46,9 +23,26 @@ const Home: NextPage = () => {
               Mint a NFT to get unlimited ownership forever!
             </p>
           </div>
-          <NftList 
-          nfts = {nfts as NftMeta[]}
-          />
+          { network.isConnectedToNetwork ?
+            <NftList /> :
+            <div className="rounded-md bg-yellow-50 p-4 mt-10">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                </div>
+                <div className="ml-3">
+                  <h3 className="text-sm font-medium text-yellow-800">Attention needed</h3>
+                  <div className="mt-2 text-sm text-yellow-700">
+                    <p>
+                    { network.isLoading ?
+                      "Loading..." :
+                      `Connect to ${network.targetNetwork}`
+                    }
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
         </div>
       </div>
     </BaseLayout>
